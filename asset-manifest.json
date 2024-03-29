@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/alpha-telecom/static/css/main.964fdded.css",
+    "main.js": "/alpha-telecom/static/js/main.bfe3e3e6.js",
+    "index.html": "/alpha-telecom/index.html",
+    "main.964fdded.css.map": "/alpha-telecom/static/css/main.964fdded.css.map",
+    "main.bfe3e3e6.js.map": "/alpha-telecom/static/js/main.bfe3e3e6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.964fdded.css",
+    "static/js/main.bfe3e3e6.js"
+  ]
+}
