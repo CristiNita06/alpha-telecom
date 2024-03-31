@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/alpha-telecom/static/css/main.964fdded.css",
-    "main.js": "/alpha-telecom/static/js/main.bfe3e3e6.js",
+    "main.js": "/alpha-telecom/static/js/main.4a0f2d1e.js",
     "index.html": "/alpha-telecom/index.html",
     "main.964fdded.css.map": "/alpha-telecom/static/css/main.964fdded.css.map",
-    "main.bfe3e3e6.js.map": "/alpha-telecom/static/js/main.bfe3e3e6.js.map"
+    "main.4a0f2d1e.js.map": "/alpha-telecom/static/js/main.4a0f2d1e.js.map"
   },
   "entrypoints": [
     "static/css/main.964fdded.css",
-    "static/js/main.bfe3e3e6.js"
+    "static/js/main.4a0f2d1e.js"
   ]
 }
