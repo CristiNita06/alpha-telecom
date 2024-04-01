@@ -1,35 +1,37 @@
 import "./App.css";
-import { createRecord } from "./components/Utils";
-import { useState, useRef } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import { createRecord, updateToken, fetchAllRecords } from "./components/Utils";
+import { useState, useEffect } from "react";
 import RefreshToken from "./components/RefreshToken";
+import Records from "./components/Records";
 
 function App() {
   const [token, setToken] = useState("");
-  const [expiredToken, setExpiredToken] = useState(false);
-  const inputToken = useRef();
+  const [records, setRecords] = useState("");
+  const [activeToken, setActiveToken] = useState(false);
+
+  useEffect(() => {
+    fetchAllRecords(token, setActiveToken, setRecords);
+  }, [token]);
 
   return (
     <div className="App">
-      {expiredToken && (
-        <div>
-          <input type="text" ref={inputToken}></input>
-          <button
-            onClick={() => {
-              setToken(inputToken.current.value);
-              setExpiredToken(false);
-            }}
-          >
-            Refresh token
-          </button>
-        </div>
+      {activeToken && (
+        <RefreshToken
+          updateToken={updateToken}
+          setToken={setToken}
+          setActiveToken={setActiveToken}
+        />
       )}
       <button
         onClick={() => {
-          createRecord(token, setExpiredToken);
+          createRecord(token, setActiveToken, setRecords);
         }}
       >
         Create Record
       </button>
+      {records && <Records records={records} />}
     </div>
   );
 }
