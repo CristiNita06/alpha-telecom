@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import Button from "react-bootstrap/Button";
 
 export default function RefreshToken({
   updateToken,
@@ -11,14 +12,15 @@ export default function RefreshToken({
     <div>
       <div>
         <input type="text" ref={inputToken}></input>
-        <button
+        <Button
+          size="sm"
           onClick={() => {
             updateToken(setToken, inputToken.current.value);
             setActiveToken(false);
           }}
         >
           Refresh token
-        </button>
+        </Button>
       </div>
     </div>
   );

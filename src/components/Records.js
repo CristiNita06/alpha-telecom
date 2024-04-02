@@ -1,8 +1,12 @@
 import "./styles/Records.css";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
+import { NavLink } from "react-router-dom";
+// import { useState } from "react";
 
-export default function Records({ records }) {
+export default function Records({ records, token }) {
+  // const [test, setTest] = useState("test data");
+
   return (
     <div className="recordsWrapper">
       <Table striped bordered hover size="sm" responsive="sm" variant="dark">
@@ -21,7 +25,9 @@ export default function Records({ records }) {
               <td>{record.short_description}</td>
               <td>
                 <Button variant="info" size="sm">
-                  Edit
+                  <NavLink to={record.number} state={[record.number, token]}>
+                    Edit
+                  </NavLink>
                 </Button>
               </td>
               <td>

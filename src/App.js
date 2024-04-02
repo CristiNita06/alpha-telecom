@@ -1,38 +1,36 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import { createRecord, updateToken, fetchAllRecords } from "./components/Utils";
-import { useState, useEffect } from "react";
-import RefreshToken from "./components/RefreshToken";
-import Records from "./components/Records";
+// import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Home from "./components/Home";
+import Record from "./components/Record";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 
 function App() {
-  const [token, setToken] = useState("");
-  const [records, setRecords] = useState("");
-  const [activeToken, setActiveToken] = useState(false);
-
-  useEffect(() => {
-    fetchAllRecords(token, setActiveToken, setRecords);
-  }, [token]);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="alpha-telecom">
+        <Route index element={<Home />} />
+        <Route path=":id" element={<Record />} />
+        {/* ... etc. */}
+      </Route>
+    )
+  );
 
   return (
-    <div className="App">
-      {activeToken && (
-        <RefreshToken
-          updateToken={updateToken}
-          setToken={setToken}
-          setActiveToken={setActiveToken}
-        />
-      )}
-      <button
-        onClick={() => {
-          createRecord(token, setActiveToken, setRecords);
-        }}
-      >
-        Create Record
-      </button>
-      {records && <Records records={records} />}
-    </div>
+    // <BrowserRouter>
+    //   <Routes>
+    //     <Route path="alpha-telecom" element={<Home />}>
+    //       <Route path=":id" element={<Record />} />
+    //     </Route>
+    //   </Routes>
+    // </BrowserRouter>
+    <RouterProvider router={router} />
   );
 }
 

@@ -14,8 +14,24 @@ export const updateToken = (setToken, value) => {
   setToken(value);
 };
 
-export const fetchRecord = () => {
-  console.log("fetchRecord");
+export const fetchRecord = (token) => {
+  let config = {
+    method: "get",
+    maxBodyLength: Infinity,
+    url: "https://dev193198.service-now.com/api/x_934462_alpha_tel/alpha_telecom/APH0001001",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  };
+
+  axios
+    .request(config)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 export const fetchAllRecords = (token, setActiveToken, setRecords) => {
   const qs = require("qs");
