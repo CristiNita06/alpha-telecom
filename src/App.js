@@ -16,7 +16,7 @@ function App() {
     createRoutesFromElements(
       <Route path="alpha-telecom">
         <Route index element={<Home />} />
-        <Route path=":id" element={<Record />} />
+        <Route path=":number" element={<Record />} />
         {/* ... etc. */}
       </Route>
     )

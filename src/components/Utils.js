@@ -13,12 +13,13 @@ const tokenPopupVisibility = (setActiveToken, value) => {
 export const updateToken = (setToken, value) => {
   setToken(value);
 };
-
-export const fetchRecord = (token) => {
+export const fetchRecord = (token, recordNumber, setRecordData) => {
   let config = {
     method: "get",
     maxBodyLength: Infinity,
-    url: "https://dev193198.service-now.com/api/x_934462_alpha_tel/alpha_telecom/APH0001001",
+    url:
+      "https://dev193198.service-now.com/api/x_934462_alpha_tel/alpha_telecom/" +
+      recordNumber,
     headers: {
       Authorization: "Bearer " + token,
     },
@@ -27,7 +28,8 @@ export const fetchRecord = (token) => {
   axios
     .request(config)
     .then((response) => {
-      console.log(JSON.stringify(response.data));
+      console.log(JSON.stringify(response.data.result));
+      setRecordData(response.data.result[0]);
     })
     .catch((error) => {
       console.log(error);

@@ -2,43 +2,42 @@ import "./styles/Records.css";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { NavLink } from "react-router-dom";
-// import { useState } from "react";
 
 export default function Records({ records, token }) {
-  // const [test, setTest] = useState("test data");
-
   return (
-    <div className="recordsWrapper">
-      <Table striped bordered hover size="sm" responsive="sm" variant="dark">
-        <thead>
-          <tr>
-            <th>Number</th>
-            <th>Short Description</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {records.map((record) => (
-            <tr key={record.number}>
-              <td>{record.number}</td>
-              <td>{record.short_description}</td>
-              <td>
-                <Button variant="info" size="sm">
-                  <NavLink to={record.number} state={[record.number, token]}>
-                    Edit
-                  </NavLink>
-                </Button>
-              </td>
-              <td>
-                <Button variant="danger" size="sm">
-                  Delete
-                </Button>
-              </td>
+    <div>
+      <div className="recordsWrapper">
+        <Table striped bordered hover size="sm" responsive="sm" variant="dark">
+          <thead>
+            <tr>
+              <th>Number</th>
+              <th>Short Description</th>
+              <th></th>
+              <th></th>
             </tr>
-          ))}
-        </tbody>
-      </Table>
+          </thead>
+          <tbody>
+            {records.map((record) => (
+              <tr key={record.number}>
+                <td>{record.number}</td>
+                <td>{record.short_description}</td>
+                <td>
+                  <Button variant="info" size="sm">
+                    <NavLink to={record.number} state={[record.number, token]}>
+                      Edit
+                    </NavLink>
+                  </Button>
+                </td>
+                <td>
+                  <Button variant="danger" size="sm">
+                    Delete
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </div>
     </div>
   );
 }
